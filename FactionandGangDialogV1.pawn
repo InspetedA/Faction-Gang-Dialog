@@ -1,0 +1,71 @@
+/*
+
+                ███████╗░█████╗░░█████╗░████████╗██╗░█████╗░███╗░░██╗  ░█████╗░███╗░░██╗██████╗░
+                ██╔════╝██╔══██╗██╔══██╗╚══██╔══╝██║██╔══██╗████╗░██║  ██╔══██╗████╗░██║██╔══██╗
+                █████╗░░███████║██║░░╚═╝░░░██║░░░██║██║░░██║██╔██╗██║  ███████║██╔██╗██║██║░░██║
+                ██╔══╝░░██╔══██║██║░░██╗░░░██║░░░██║██║░░██║██║╚████║  ██╔══██║██║╚████║██║░░██║
+                ██║░░░░░██║░░██║╚█████╔╝░░░██║░░░██║╚█████╔╝██║░╚███║  ██║░░██║██║░╚███║██████╔╝
+                ╚═╝░░░░░╚═╝░░╚═╝░╚════╝░░░░╚═╝░░░╚═╝░╚════╝░╚═╝░░╚══╝  ╚═╝░░╚═╝╚═╝░░╚══╝╚═════╝░
+                                    
+                                    ░██████╗░░█████╗░███╗░░██╗░██████╗░
+                                    ██╔════╝░██╔══██╗████╗░██║██╔════╝░
+                                    ██║░░██╗░███████║██╔██╗██║██║░░██╗░
+                                    ██║░░╚██╗██╔══██║██║╚████║██║░░╚██╗
+                                    ╚██████╔╝██║░░██║██║░╚███║╚██████╔╝
+                                    ░╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░
+
+                                 _             _                           
+                                | |           | |                          
+                                | |__  _   _  | |__   __ ___   _____ _ __  
+                                | '_ \| | | | | '_ \ / _` \ \ / / _ \ '_ \ 
+                                | |_) | |_| | | | | | (_| |\ V /  __/ | | |
+                                |_.__/ \__, | |_| |_|\__,_| \_/ \___|_| |_|
+                                        __/ |                              
+                                       |___/                               
+
+                                   (https://www.youtube.com/HavenCharlesPapasin)
+                                  (https://www.facebook.com/HavenCharlesPapasinYT)       
+*/
+
+//Put this on Dialog_HELP
+
+DIALOG_HMEMBERS,
+
+
+// Put this on /help OR CMD:HELP above
+
+ShowMembersDialog(playerid) 
+{
+	ShowPlayerDialog(playerid, DIALOG_HMEMBERS, DIALOG_STYLE_LIST, "Members System by Haven", "Gang Members\nFaction Members", "Ok", "Cancel");
+	return 1;
+}
+
+CMD:members(playerid, params[])
+{
+	ShowMembersDialog(playerid);
+	return 1;
+}
+
+//Put this on public OnDialogResponse
+
+if(dialogid == DIALOG_HMEMBERS) // Members Dialog by Haven
+	{
+		new params[28];
+		if(response)
+		{
+			if(listitem == 0) // Gang Members
+			{
+				return callcmd::gmembers(playerid, params);
+			}
+			if(listitem == 1) // Faction Members
+			{
+				return callcmd::fmembers(playerid, params);
+			}
+		}
+		return 1;
+	}
+
+
+// I'LL MAKE VERSION 2 ON THIS JUST WAIT FOR AN UPDATE OR DROP....
+// JOIN HERE IF YOU WANT TO KNOW THE UPDATE ON THIS
+// https://discord.gg/GJqHAHVUYb
